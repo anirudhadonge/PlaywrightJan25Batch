@@ -15,6 +15,6 @@
 
 /// Array
 
-let myArray:string;
+let myArray:string[];
 
 myArray = ['Anirudha','Mrunali','Debashree']
