@@ -20,14 +20,14 @@
 
 // console.log(Zen);
 
-let fun = function(x,y){
-    this.x = x;
-    this.y = y;
-    display=()=>{
-        console.log(`display function ${x} abd ${y}`);
-    }
-}
+// let fun = function(x,y){
+//     this.x = x;
+//     this.y = y;
+//     display=()=>{
+//         console.log(`display function ${x} abd ${y}`);
+//     }
+// }
 
 
-let fun1 = new fun(5,4);
-fun1.display();
+// let fun1 = new fun(5,4);
+// fun1.display();

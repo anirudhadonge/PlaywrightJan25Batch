@@ -1,5 +1,5 @@
 // Union type
-// let myVar : string | Number
+ let myVar : string | Number
 
 // myVar = "Anirudha";
 // myVar = 5;
@@ -7,7 +7,7 @@
 
 // Any 
 
-let myVar : any
+// let myVar : any
 
 myVar = 'Anirudha';
 myVar = 56;

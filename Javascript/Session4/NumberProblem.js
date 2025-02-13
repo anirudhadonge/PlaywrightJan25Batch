@@ -5,7 +5,7 @@ let temNumber = 0;
 
 while(myNumber>0){
     temNumber = temNumber *10 + myNumber%10;
-    myNumber = myNumber/10 - (myNumber%10)/10;
+    myNumber = myNumber/10 - (myNumber%10)/10; //123.4 -->123
 }
-
+ 
 console.log(temNumber);
