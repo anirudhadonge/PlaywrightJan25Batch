@@ -85,8 +85,7 @@ class MicrosoftSurface extends Laptop{
     touch:boolean 
     constructor(name:string,brand:string,Ram:number,processor:string,touch:boolean){
         super(name,brand,Ram,processor);
-        this.touch:touch;    
+        this.touch=touch;    
         
     }
-
 }
