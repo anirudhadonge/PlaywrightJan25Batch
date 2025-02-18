@@ -116,7 +116,7 @@ abstract class human{
         console.log("Human work to earn their bread");
     }
 
-    abstract eat();
+    abstract eat():void;
 }
 
 class h1 extends human{
