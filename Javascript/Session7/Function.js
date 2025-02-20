@@ -78,12 +78,50 @@
 // await endFunction()
 
 
-function firstFun(secondFun){
-  secondFun();
+// function firstFun(secondFun){
+//   secondFun();
+// }
+
+// function secondFun(){
+//   console.log('This is the second/Call Back function');
+// }
+
+// firstFun(secondFun);
+
+
+// function myFunction(par1, par2){
+//   return par1,par2
+// }
+
+// myFunction(4,5)
+
+// (par1,par2) =>{
+//   return par1+par2
+// }
+
+
+let fruits = ['Orange','Apple','Kiwi']
+function iterate(value){
+  console.log(value)
 }
 
-function secondFun(){
-  console.log('This is the second/Call Back function');
-}
+fruits.forEach((value)=>{
+console.log(value);
+});
 
-firstFun(secondFun);
+// Call back function javascript
+/// function inside a function as a parameter
+// setTimeout(()=>{
+// console.log('This is a setTime out function')
+// },3000)
+// function func2(){
+//   console.log('This a function');
+// }
+
+// function func1(fun2){
+//   fun2();
+// }
+
+// func1(()=>{
+//   console.log('This is a function');
+// })
