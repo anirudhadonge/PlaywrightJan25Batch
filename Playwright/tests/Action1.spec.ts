@@ -1,4 +1,4 @@
-import {test,expect} from '@playwright/test'
+import {test,expect} from './../fixture/Fixture.ts'
 
 // test("Download File Test",async ({page})=>{
 //     await page.goto("https://the-internet.herokuapp.com/download");
@@ -81,12 +81,11 @@ Brower ---> Browser Context ---> page
 test('Drag Dropping ',async({page})=>{
     
     await page.goto("https://the-internet.herokuapp.com/drag_and_drop");
-
+    await page.waitForLoadState("networkidle");
     // 1. Element that need to dragged 
     // 2. Where it need to be dropped.
     await page.locator("#column-a").dragTo(page.locator('#column-b'));
-    const locator = await page.locator('#column-b');
+    const locator = page.locator('#column-b');
     //await page.waitForSelector('#column-b',{state:"visible"});
-    await page.waitForLoadState("networkidle");
     await expect(page.locator('#column-b')).toHaveText('A');
 })

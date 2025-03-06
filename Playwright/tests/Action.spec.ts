@@ -4,30 +4,7 @@ import { expect, test } from '@playwright/test';
  * Fill 
  * Presequentially
  */
-// test('Clicking Action demo',async ({page})=>{
-//     let homePage = new HomePage(page);
-//     await homePage.navigateToUrl("https://the-internet.herokuapp.com/");
-//     await homePage.clickOnElement("[href='/login']");
-//     let userNameInput = page.locator('#username');
-//     await userNameInput.pressSequentially("tomsmith",{delay:3000});
-// })
 
-// test('Selection of Options from Dropdown',async({page})=>{
-//     await page.goto("https://the-internet.herokuapp.com/dropdown");
-//     let dropdown = page.locator('select#dropdown');
-//     await dropdown.selectOption({index:1});
-// })
-
-/// Checkboxes and radio buttons
-
-// test("Interacting with CheckBoxes",async({page})=>{
-//     await page.goto("https://the-internet.herokuapp.com/checkboxes");    
-//     let checkbox1 = page.locator("#checkboxes input").nth(0);
-//     await checkbox1.uncheck();
-//     expect(await checkbox1.isChecked()).toBeTruthy();
-//     let checkbox2 = page.locator("#checkboxes input").nth(1);
-//     await checkbox2.uncheck();
-// })
 
 // test.only("Interacting with CheckBoxes randomly",async({page})=>{
 //     await page.goto("https://the-internet.herokuapp.com/checkboxes");    
@@ -90,15 +67,15 @@ import { expect, test } from '@playwright/test';
 // await download.saveAs("C:/UploadFiles/" + download.suggestedFilename());
 // })
 
-test('Multiple Windows test',async({page,context})=>{
-    await page.goto("https://the-internet.herokuapp.com/windows");
-    const pagePromise = context.waitForEvent('page');
-    await page.locator("[href='/windows/new']").click();
-    const newPage = await pagePromise;
-    await expect(newPage.locator('h3')).toHaveText("New Window");
-    await newPage.close();
-    await expect(page.locator("h3")).toHaveText("Opening a new window");
-})
+// test('Multiple Windows test',async({page,context})=>{
+//     await page.goto("https://the-internet.herokuapp.com/windows");
+//     const pagePromise = context.waitForEvent('page');
+//     await page.locator("[href='/windows/new']").click();
+//     const newPage = await pagePromise;
+//     await expect(newPage.locator('h3')).toHaveText("New Window");
+//     await newPage.close();
+//     await expect(page.locator("h3")).toHaveText("Opening a new window");
+// })
 
 
 // test("Basic Authenciation",async({page})=>{
@@ -117,3 +94,57 @@ test('Multiple Windows test',async({page,context})=>{
 //     // await page.mouse.up();
 //     await expect(page.locator("#column-b")).toHaveText('A');
 // })
+
+
+// test('Validate Disability of Textbox ',async({page})=>{
+//     await page.goto("https://the-internet.herokuapp.com/dynamic_controls");
+//     const textBox = page.locator("input[type='text']");
+//     await expect(textBox).toBeDisabled();
+//     await page.locator("[onclick='swapInput()']").click();
+//     await expect(textBox).toBeEnabled();
+// })
+
+// test('Validate Visiblity of element',async({page})=>{
+//     await page.goto("https://the-internet.herokuapp.com/dynamic_controls");
+//     const checkbox = page.locator("#checkbox input[type='checkbox']");
+//     await expect(checkbox).toBeVisible();
+//     await page.locator("button[onclick='swapCheckbox()']").click();
+//     await expect(checkbox).toBeHidden();
+//     await page.waitForTimeout(10000);
+//     const message = page.locator("p#message");
+//     //await expect(message).toContainText("It's gon");
+//     expect(message.innerText()).toContain("It's gon") // Partial Text Assert.Equals(value1,value2,"")
+//     //await expect(page.locator("p#message")).toHaveText("It's gon") /// whole text is getting validated
+// })
+
+//test.describe /// Grouping of the test can be done through describe block.
+
+test.describe('Test test belongs to Fill textbox, Checkbox, dropdown',async()=>{
+    test.beforeEach('Navigating to the url',async({page})=>{
+       await page.goto('https://the-internet.herokuapp.com/');
+    })
+    test('Clicking Action demo',async ({page})=>{
+    await page.goto("https://the-internet.herokuapp.com/");
+    await page.locator("[href='/login']").click();
+    let userNameInput = page.locator('#username');
+    await expect(userNameInput).toBeAttached();
+    await userNameInput.pressSequentially("tomsmith",{delay:500});
+})
+
+test('Selection of Options from Dropdown',async({page})=>{
+    await page.goto("https://the-internet.herokuapp.com/dropdown");
+    let dropdown = page.locator('select#dropdown');
+    await dropdown.selectOption({index:1});
+})
+
+// Checkboxes and radio buttons
+
+test("Interacting with CheckBoxes",async({page})=>{
+    await page.goto("https://the-internet.herokuapp.com/checkboxes");    
+    let checkbox1 = page.locator("#checkboxes input").nth(0);
+    await checkbox1.check();
+    await expect(checkbox1).toBeChecked();
+    let checkbox2 = page.locator("#checkboxes input").nth(1);
+    await checkbox2.uncheck();
+})
+})
