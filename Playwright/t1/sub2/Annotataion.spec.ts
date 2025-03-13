@@ -21,7 +21,7 @@ test.describe("The is a block for demo describe", async () => {
     })       
   });
 
-  test("Drag Dropping ", async ({ page }) => {
+  test("@smoke Drag Dropping ", async ({ page }) => {
    test.slow();
     await test.step('Click on Drag and Drop link',async()=>{
         await page.locator('[href="/drag_and_drop"]').click();
@@ -41,13 +41,13 @@ test.describe("The is a block for demo describe", async () => {
     })
   });
 
-  test.skip("New Page Test", async ({ page, context }) => {
+  test("@Regression New Page Test", async ({ page, context }) => {
    
     await page.locator('[href="/windows"]').click();
     const NewPageEvent = context.waitForEvent("page");
     await page.locator("[href='/windows/new']").click();
     const newPage = await NewPageEvent;
-    await expect(newPage.locator("h3")).toHaveText("New Window");
+    await expect(newPage.locator("h3")).toHaveText("New Window1");
   });
 
   test.afterEach("this is after each method", async () => {
